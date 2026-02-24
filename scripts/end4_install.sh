@@ -1,24 +1,29 @@
 #!/bin/bash
 
-for dir in "$HOME/hypr/end4"/*; do
-    name=$(basename "$dir")
-    target="$HOME/.config/$name"
+# Пути к исходным директориям
+HYPR_SRC="$HOME/end4-dots/hypr"
+QUICKSHELL_SRC="$HOME/end4-dots/quickshell"
 
-    # Создаём целевую директорию, если её нет
-    mkdir -p "$target"
+# Пути назначения
+HYPR_TARGET="$HOME/.config/hypr"
+QUICKSHELL_TARGET="$HOME/.config/quickshell"
 
-    # Копируем содержимое (а не саму папку), перезаписывая только то, что есть в dotfiles
-    if [ -d "$dir" ]; then
-        cp -rT "$dir/" "$target/"
+# Функция для замены директории
+replace_dir() {
+    local src="$1"
+    local target="$2"
+
+    if [ -d "$src" ]; then
+        # Удаляем старую директорию полностью
+        rm -rf "$target"
+        # Копируем новую
+        cp -r "$src" "$target"
+        echo "Обновлено: $target"
     else
-        cp "$dir" "$target"
+        echo "Ошибка: исходная директория $src не найдена!" >&2
     fi
-done
+}
 
-SCRIPT_SRC="$HOME/hypr/end4/hypr/hyprland/scripts/workspaces"
-if [ -f "$SCRIPT_SRC" ]; then
-    sudo cp "$SCRIPT_SRC" /usr/bin/workspaces
-    sudo chmod +x /usr/bin/workspaces
-else
-    echo "Предупреждение: скрипт workspaces не найден по пути $SCRIPT_SRC" >&2
-fi
+# Обновляем hypr и quickshell
+replace_dir "$HYPR_SRC" "$HYPR_TARGET"
+#replace_dir "$QUICKSHELL_SRC" "$QUICKSHELL_TARGET"

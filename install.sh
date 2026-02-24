@@ -6,27 +6,27 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-~/hypr/scripts/app_install.sh
+./scripts/app_install.sh
 
 case "$1" in
-    caelestia)
-        ~/hypr/scripts/caelestia_install.sh
-        ;;
     end4)
-        ~/hypr/scripts/end4_install.sh
+        ./scripts/end4_install.sh
         ;;
     vpn)
-        ~/hypr/scripts/vpn_install.sh
+        ./scripts/vpn_install.sh
+        ;;
+    grub_theme)
+        ./monterey-grub-theme/install.sh
         ;;
     *)
-        echo "Допустимые значения: caelestia, end4"
+        echo "Допустимые значения: vpn, end4, grub_theme"
         exit 1
         ;;
 esac
 
 echo "🧰 Copying all dotfiles..."
 
-for dir in "$HOME/hypr/dotfiles"/*; do
+for dir in "$HOME/end4-dots/dotfiles"/*; do
     name=$(basename "$dir")
     target="$HOME/.config/$name"
 
