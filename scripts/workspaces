@@ -9,7 +9,7 @@ get_app_config() {
             printf 'com.ayugram.desktop|AyuGram\n'
             ;;
         vpn)
-            printf 'hiddify|vpn_start\n'
+            printf 'app.hiddify.com|vpn_start\n'
             ;;
         obsidian)
             printf 'obsidian|obsidian\n'

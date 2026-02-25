@@ -27,3 +27,5 @@ replace_dir() {
 # Обновляем hypr и quickshell
 replace_dir "$HYPR_SRC" "$HYPR_TARGET"
 #replace_dir "$QUICKSHELL_SRC" "$QUICKSHELL_TARGET"
+
+sudo cp ./scripts/workspaces /usr/bin/
