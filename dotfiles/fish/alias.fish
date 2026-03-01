@@ -1,9 +1,10 @@
 alias c="clear"
 alias ls="exa"
-alias aliascf="nano ~/hypr/dotfiles/fish/alias.fish"
+alias aliascf="nano ~/end4-dots/dotfiles/fish/alias.fish"
 alias hs="history | grep --color=auto "
 alias sshp="ssh lednevs.ru -p 1009"
 alias dc="docker compose"
 alias almrev="alembic revision --autogenerate -m"
 alias almup="alembic upgrade head"
 alias dps 'docker ps --format "{{.Names}} - {{.Status}}"'
+alias flutter_build "flutter pub run build_runner build --delete-conflicting-outputs"
